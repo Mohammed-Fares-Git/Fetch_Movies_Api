@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/film_bg"
+        android:padding="17dp"
+        android:layout_marginBottom="15dp">
+
+        <ImageView
+            android:id="@+id/img_film_small_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            />
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:textColor="#fff"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="movie name"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:layout_marginBottom="20dp"/>
+            <TextView
+                android:id="@+id/tv_price"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                android:textStyle="italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="movie price"
+                android:layout_gravity="bottom"
+                />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/img_subtitel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/baseline_subtitles_24"/>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
