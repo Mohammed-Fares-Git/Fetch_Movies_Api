@@ -1,6 +1,5 @@
 package com.example.fetch_movies_api
 
-import android.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
