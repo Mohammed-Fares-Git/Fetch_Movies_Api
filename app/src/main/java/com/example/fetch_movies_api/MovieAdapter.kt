@@ -11,15 +11,15 @@ import com.example.fetch_movies_api.model.Film
 import com.squareup.picasso.Picasso
 
 
-class FilmsAdapter(private val films: ArrayList<Film>, private val filmIteraction: FilmIteraction) :
-    RecyclerView.Adapter<FilmsAdapter.FilmVh>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmVh {
+class MovieAdapter(private val films: ArrayList<Film>, private val filmIteraction: FilmIteraction) :
+    RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val v: View =
             LayoutInflater.from(parent.context).inflate(R.layout.movie_list_item, null, false)
-        return FilmVh(v)
+        return MovieViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: FilmVh, position: Int) {
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val film = films[position]
         holder.bind(film, film.name, film.price!!, film.image, film.traduction)
     }
@@ -28,7 +28,7 @@ class FilmsAdapter(private val films: ArrayList<Film>, private val filmIteractio
         return films.size
     }
 
-    inner class FilmVh(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var film: Film? = null
         private val tv_name: TextView
         private val tv_price: TextView
