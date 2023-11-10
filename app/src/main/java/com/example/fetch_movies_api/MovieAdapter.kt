@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fetch_movies_api.model.Film
+import com.example.fetch_movies_api.model.Movie
 import com.squareup.picasso.Picasso
 
 
-class MovieAdapter(private val films: ArrayList<Film>, private val filmIteraction: MovieIteraction) :
+class MovieAdapter(private val films: ArrayList<Movie>, private val filmIteraction: MovieIteraction) :
     RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val v: View =
@@ -28,7 +28,7 @@ class MovieAdapter(private val films: ArrayList<Film>, private val filmIteractio
     }
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var film: Film? = null
+        private lateinit var movie: Movie
         private val tv_name: TextView
         private val tv_price: TextView
         private val film_image: ImageView
@@ -39,11 +39,11 @@ class MovieAdapter(private val films: ArrayList<Film>, private val filmIteractio
             tv_price = itemView.findViewById<TextView>(R.id.tv_price)
             film_image = itemView.findViewById<ImageView>(R.id.img_film_small_pic)
             sub_titel_image = itemView.findViewById<ImageView>(R.id.img_subtitel)
-            itemView.setOnClickListener { filmIteraction.onMovieClicked(film) }
+            itemView.setOnClickListener { filmIteraction.onMovieClicked(movie) }
         }
 
-        fun bind(film: Film?, name: String?, price: Int, imgUrl: String?, isTranslated: Boolean?) {
-            this.film = film
+        fun bind(movie1: Movie, name: String?, price: Int, imgUrl: String?, isTranslated: Boolean?) {
+            this.movie = movie1
             Picasso.get().load(imgUrl).resize(200, 200)
                 .centerCrop()
                 .into(film_image)
@@ -58,6 +58,6 @@ class MovieAdapter(private val films: ArrayList<Film>, private val filmIteractio
     }
 
     interface MovieIteraction {
-        fun onMovieClicked(film: Film?)
+        fun onMovieClicked(movie: Movie)
     }
 }
