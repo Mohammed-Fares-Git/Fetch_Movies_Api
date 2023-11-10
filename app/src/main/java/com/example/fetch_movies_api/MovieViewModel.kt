@@ -7,12 +7,12 @@ import com.example.fetch_movies_api.model.Film
 
 
 class MovieViewModel : ViewModel() {
-    private val filmMutableLiveData = MutableLiveData<Film>()
+    private val movieMutableLiveData = MutableLiveData<Film>()
     fun getFilmMutableLiveData(): LiveData<Film> {
-        return filmMutableLiveData
+        return movieMutableLiveData
     }
 
     fun setFilmMutableLiveData(film: Film) {
-        filmMutableLiveData.value = film
+        movieMutableLiveData.value = film
     }
 }

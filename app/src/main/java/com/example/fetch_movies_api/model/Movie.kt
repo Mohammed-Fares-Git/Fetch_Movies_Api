@@ -3,7 +3,7 @@ package com.example.fetch_movies_api.model
 import java.io.Serializable
 
 
-class Film : Serializable {
+class Movie : Serializable {
     var traduction: Boolean? = null
     var image: String? = null
     var price: Int? = null
