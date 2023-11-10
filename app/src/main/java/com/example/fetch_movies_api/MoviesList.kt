@@ -6,20 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
-import com.example.fetch_movies_api.model.Film
+import com.example.fetch_movies_api.model.Movie
 import com.example.fetch_movies_api.databinding.FragmentMoviesListBinding
 import org.json.JSONException
 
 
 class MoviesList : Fragment() {
     private lateinit var frg1Binding: FragmentMoviesListBinding
-    private lateinit var sharedeViewModel: FilmViewModel
+    private lateinit var sharedeViewModel: MovieViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -29,7 +28,7 @@ class MoviesList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         frg1Binding = FragmentMoviesListBinding.inflate(inflater, container, false)
-        sharedeViewModel = ViewModelProvider(requireActivity()).get(FilmViewModel::class.java)
+        sharedeViewModel = ViewModelProvider(requireActivity()).get(MovieViewModel::class.java)
         // Inflate the layout for this fragment
         frg1Binding.filmsList.setLayoutManager(LinearLayoutManager(activity))
         frg1Binding.filmsList.setHasFixedSize(true)
@@ -39,7 +38,7 @@ class MoviesList : Fragment() {
 
     val filmsData: Unit
         get() {
-            val films = ArrayList<Film>()
+            val movies = ArrayList<Movie>()
             val requestQueue = Volley.newRequestQueue(activity)
             val request = JsonArrayRequest(
                 Request.Method.GET, FILMS_URL, null,
@@ -47,23 +46,20 @@ class MoviesList : Fragment() {
                     for (i in 0 until response.length()) {
                         try {
                             val jsonObject = response.getJSONObject(i)
-                            val film = Film()
-                            film.id = jsonObject.getString("id")
-                            film.name = jsonObject.getString("name")
-                            film.image = jsonObject.getString("image")
-                            film.price = jsonObject.getInt("price")
-                            film.traduction = jsonObject.getBoolean("traduction")
-                            films.add(film)
-                            films.add(film)
-                            films.add(film)
-                            films.add(film)
-                            val filmsAdapter = MovieAdapter(films, object : MovieAdapter.MovieIteraction {
-                                override fun onMovieClicked(film: Film?) {
-                                    sharedeViewModel.setFilmMutableLiveData(film)
+                            val movie = Movie()
+                            movie.id = jsonObject.getString("id")
+                            movie.name = jsonObject.getString("name")
+                            movie.image = jsonObject.getString("image")
+                            movie.price = jsonObject.getInt("price")
+                            movie.traduction = jsonObject.getBoolean("traduction")
+                            movies.add(movie)
+                            val movieAdapter = MovieAdapter(movies, object : MovieAdapter.MovieIteraction {
+                                override fun onMovieClicked(movie: Movie) {
+                                    sharedeViewModel.setFilmMutableLiveData(movie)
                                 }
 
                             })
-                            frg1Binding.filmsList.setAdapter(filmsAdapter)
+                            frg1Binding.filmsList.setAdapter(movieAdapter)
                             frg1Binding.filmsList.setHasFixedSize(true)
                         } catch (e: JSONException) {
                             frg1Binding.filmsList.setVisibility(View.GONE)
