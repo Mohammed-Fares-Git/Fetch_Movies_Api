@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.fetch_movies_api.model.Film
 
 
-class FilmViewModel : ViewModel() {
+class MovieViewModel : ViewModel() {
     private val filmMutableLiveData = MutableLiveData<Film>()
     fun getFilmMutableLiveData(): LiveData<Film> {
         return filmMutableLiveData

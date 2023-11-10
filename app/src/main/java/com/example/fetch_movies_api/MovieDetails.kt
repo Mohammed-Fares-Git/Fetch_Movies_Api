@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.fradmentstutos.databinding.FragmentFrg2Binding
+import com.example.fetch_movies_api.databinding.FragmentMoviesListBinding
 
 
-class Frg2 : Fragment() {
-    private var frg2Binding: FragmentFrg2Binding? = null
-    private val sharedeViewModel: FilmViewModel? = null
+class MovieDetails : Fragment() {
+    private lateinit var binding: FragmentMoviesListBinding
+    private lateinit var sharedeViewModel: MovieViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -18,8 +18,8 @@ class Frg2 : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        frg2Binding = FragmentFrg2Binding.inflate(inflater, container, false)
+    ): View {
+        binding = FragmentMoviesListBinding.inflate(inflater, container, false)
         /* sharedeViewModel = new ViewModelProvider(requireActivity()).get(CarOperatingCostCalculatorViewModel.class);
 
         sharedeViewModel.getCarOperatingCostMutableLiveData().observe(getViewLifecycleOwner(), new Observer<CarOperatingCost>() {
@@ -31,6 +31,6 @@ class Frg2 : Fragment() {
                 fr g2Binding.tvResult.setText("Monthly operating cost: " +String.format("%.2f", carOperatingCost.calculateMonthlyCost())+" euros");
             }
         });
-*/return frg2Binding.getRoot()
+*/  return binding.getRoot()
     }
-}}
+}

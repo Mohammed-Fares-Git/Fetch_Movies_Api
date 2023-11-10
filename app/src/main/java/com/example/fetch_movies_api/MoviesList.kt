@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
@@ -19,7 +18,7 @@ import org.json.JSONException
 
 class MoviesList : Fragment() {
     private lateinit var frg1Binding: FragmentMoviesListBinding
-    private lateinit var sharedeViewModel: FilmViewModel
+    private lateinit var sharedeViewModel: MovieViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -29,7 +28,7 @@ class MoviesList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         frg1Binding = FragmentMoviesListBinding.inflate(inflater, container, false)
-        sharedeViewModel = ViewModelProvider(requireActivity()).get(FilmViewModel::class.java)
+        sharedeViewModel = ViewModelProvider(requireActivity()).get(MovieViewModel::class.java)
         // Inflate the layout for this fragment
         frg1Binding.filmsList.setLayoutManager(LinearLayoutManager(activity))
         frg1Binding.filmsList.setHasFixedSize(true)
